@@ -1,4 +1,4 @@
-# AiAvatar 実行用 Docker環境
+# AIAvatarKit 実行用 Docker環境
 
 [aiavatarkit](https://github.com/uezo/aiavatarkit) を Docker for Mac 環境で動かす一式
 

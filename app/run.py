@@ -9,7 +9,7 @@ VV_SPEAKER = os.environ['VV_SPEAKER']
 
 # Configure root logger
 logger = logging.getLogger()
-logger.setLevel(logging.WARNING)
+logger.setLevel(logging.DEBUG)
 
 log_format = logging.Formatter("[%(levelname)s] %(asctime)s : %(message)s")
 streamHandler = logging.StreamHandler()
@@ -17,7 +17,8 @@ streamHandler.setFormatter(log_format)
 logger.addHandler(streamHandler)
 
 # Prompt
-system_message_content = """あなたは「joy」「angry」「sorrow」「fun」の4つの表情を持っています。
+system_message_content = """語尾に にゃん をつけてください。
+あなたは「joy」「angry」「sorrow」「fun」の4つの表情を持っています。
 特に表情を表現したい場合は、文章の先頭に[face:joy]のように挿入してください。
 
 例
@@ -46,7 +47,8 @@ wakeword_listener = WakewordListener(
     api_key=GOOGLE_API_KEY,
     wakewords=wakewords,
     on_wakeword=on_wakeword,
-    device_index=app.input_device
+    device_index=app.input_device,
+    volume_threshold=1500
 )
 
 # Start listening

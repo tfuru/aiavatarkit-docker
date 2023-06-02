@@ -2,13 +2,18 @@
 
 [aiavatarkit](https://github.com/uezo/aiavatarkit) を Docker for Mac 環境で動かす一式
 
-# pulseaudio
+# PulseAudio
+Macホストとコンテナ内のオーディオを繋ぐためのソフトウェア  
+PulseAudioを起動した状態でDockerコンテナーを起動すると接続される   
 ```
 # pulseaudio を設定
 brew install pulseaudio
 
+# PulseAudio を起動
 pulseaudio --load=module-native-protocol-tcp --exit-idle-time=-1
 pulseaudio --check -v
+
+# PulseAudio を停止
 pulseaudio --kill
 
 # pulseaudio デフォルトデバイスの確認
@@ -38,6 +43,9 @@ docker compose exec aiavatar /bin/bash
 # コンテナ内で録音と再生の確認
 arecord --channels 1 a.wav
 aplay a.wav
+
+# aiavatarkit 実行
+python run.py
 
 # 停止
 docker compose down

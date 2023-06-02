@@ -9,7 +9,7 @@ VV_SPEAKER = os.environ['VV_SPEAKER']
 
 # Configure root logger
 logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.WARNING)
 
 log_format = logging.Formatter("[%(levelname)s] %(asctime)s : %(message)s")
 streamHandler = logging.StreamHandler()
@@ -31,7 +31,7 @@ app = AIAvatar(
     voicevox_url=VV_URL,
     voicevox_speaker_id=VV_SPEAKER,
     system_message_content=system_message_content,
-    input_device=0,
+    input_device=-1,
     output_device=-1
 )
 

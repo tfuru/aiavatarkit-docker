@@ -2,6 +2,11 @@
 
 [aiavatarkit](https://github.com/uezo/aiavatarkit) を Docker for Mac 環境で動かす一式
 
+# Mac の音量設定
+マイクの音量を100%にしておくと音声認識しやすくなる  
+システム設定 -> サウンド -> 入力と出力 -> マイクの音量を100%にする  
+<img src="./docs/mic.png" width="400px">
+
 # PulseAudio
 Macホストとコンテナ内のオーディオを繋ぐためのソフトウェア  
 PulseAudioを起動した状態でDockerコンテナーを起動すると接続される   
@@ -11,6 +16,8 @@ brew install pulseaudio
 
 # PulseAudio を起動
 pulseaudio --load=module-native-protocol-tcp --exit-idle-time=-1
+
+# PulseAudio 起動確認
 pulseaudio --check -v
 
 # PulseAudio を停止
@@ -29,6 +36,8 @@ pactl set-default-sink 1__2
 ```
 
 # docker 
+`docker compose up` 後に コンソールへのアクセスして aiavatarkit を 起動すれば 音声対話が可能  
+
 ```
 # docker イメージをビルド
 docker compose build
@@ -40,11 +49,7 @@ docker compose up -d
 # コンソールへのアクセス
 docker compose exec aiavatar /bin/bash
 
-# コンテナ内で録音と再生の確認
-arecord --channels 1 a.wav
-aplay a.wav
-
-# aiavatarkit 実行
+# aiavatarkit 実行 後に 音声対話が可能
 python run.py
 
 # 停止

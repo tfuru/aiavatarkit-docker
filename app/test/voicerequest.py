@@ -16,8 +16,8 @@ async def main():
     while True:
         try:
             req = await request_listener.get_request()
-            if not req:
-                break
+            # if not req:
+            #    break
             print(f"User: {req}")
         except Exception as ex:
             logger.error(f"Error ex: {ex}")

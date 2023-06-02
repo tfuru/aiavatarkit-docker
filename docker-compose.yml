@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+   voicevox:
+    hostname: voicevox
+    platform: 'linux/amd64'
+    image: voicevox/voicevox_engine:latest
+    env_file:
+      - .env
+    tty: true
+    ports:
+      - 50021:50021
+   aiavatar:
+    hostname: aiavatar
+    platform: 'linux/amd64'
+    build: .
+    env_file:
+      - .env
+    tty: true
+    environment:
+      - PULSE_SERVER=docker.for.mac.localhost
+    volumes:
+      - ~/.config/pulse:/root/.config/pulse
+      - ./app:/aiavatar

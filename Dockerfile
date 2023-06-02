@@ -12,4 +12,4 @@ COPY ./app/requirements.txt /tmp
 WORKDIR /aiavatar
 RUN pip install -r /tmp/requirements.txt
 
-# CMD ["python", "run.py"]
+CMD ["python", "run.py"]

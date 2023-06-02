@@ -9,7 +9,7 @@ from aiavatar import VoiceRequestListener
 GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
 
 # Listeners
-request_listener = VoiceRequestListener(GOOGLE_API_KEY, device_index=-1)
+request_listener = VoiceRequestListener(GOOGLE_API_KEY, volume_threshold=1500, device_index=-1)
 
 async def main():
     print(f"main()")

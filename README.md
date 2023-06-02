@@ -11,7 +11,7 @@
 Macホストとコンテナ内のオーディオを繋ぐためのソフトウェア  
 PulseAudioを起動した状態でDockerコンテナーを起動すると接続される   
 ```
-# pulseaudio を設定
+# PulseAudio を設定
 brew install pulseaudio
 
 # PulseAudio を起動

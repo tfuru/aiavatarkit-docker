@@ -6,7 +6,7 @@ GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
 OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
 VV_URL = os.environ['VV_URL']
 VV_SPEAKER = os.environ['VV_SPEAKER']
-VOLUME_THRESHOLD = os.environ['VOLUME_THRESHOLD']
+VOLUME_THRESHOLD = int(os.environ['VOLUME_THRESHOLD'])
 
 # Configure root logger
 logger = logging.getLogger()
@@ -26,6 +26,9 @@ system_message_content = """語尾に にゃん をつけてください。
 [face:joy]ねえ、海が見えるよ！[face:fun]早く泳ごうよ。
 """
 
+# Create WakewordListener
+wakewords = ["こんにちは"]
+
 # Create AIAvatar
 app = AIAvatar(
     google_api_key=GOOGLE_API_KEY,
@@ -36,9 +39,6 @@ app = AIAvatar(
     input_device=-1,
     output_device=-1
 )
-
-# Create WakewordListener
-wakewords = ["こんにちは"]
 
 async def on_wakeword(text):
     logger.info(f"Wakeword: {text}")

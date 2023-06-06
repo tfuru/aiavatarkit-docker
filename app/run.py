@@ -6,6 +6,7 @@ GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
 OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
 VV_URL = os.environ['VV_URL']
 VV_SPEAKER = os.environ['VV_SPEAKER']
+VOLUME_THRESHOLD = os.environ['VOLUME_THRESHOLD']
 
 # Configure root logger
 logger = logging.getLogger()
@@ -48,7 +49,7 @@ wakeword_listener = WakewordListener(
     wakewords=wakewords,
     on_wakeword=on_wakeword,
     device_index=app.input_device,
-    volume_threshold=1500
+    volume_threshold=VOLUME_THRESHOLD
 )
 
 # Start listening
